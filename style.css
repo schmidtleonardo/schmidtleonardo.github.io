@@ -1,0 +1,96 @@
+#corpo {
+    margin-left: 10px;
+}
+#titulo {
+    margin-top: 10px;
+}
+#label {
+    width: 110px;
+    font-size: 10pt;
+    font-weight: bold;
+    margin-top: 4px;
+}
+.cell {
+    display: flex;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 350px;
+}
+#base {
+    margin-top: 10px;
+}
+#botoes, #pesquisa, #filtro, .cell {
+    margin-top: 5px;
+    margin-left: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    transform: tr;
+}
+#botoes {
+    width: fit-content;
+}
+#pesquisa {
+    width: 130px;
+}
+#filtro {
+    width: fit-content;
+}
+
+button {
+    border: none;
+    background: white;
+}
+
+#soma {
+    margin-left: 10px;
+    margin-top: 10px;
+    height: 10px;
+    margin-right: 15px;
+    vertical-align: middle;
+    line-height: 50px;
+    text-align: center;
+}
+body {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11pt;
+    background: black;
+}
+.dados {
+    width: 200px;
+}
+#radio {
+    height: auto;
+    width: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+section{
+    background: white;
+    width: 550px;
+    padding: 3px;
+    border-radius: 6px;
+    float: left;
+
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    transform: tr;
+}
+#radio, #res {
+    float: left;
+}
+input[type=radio] {
+    vertical-align: center;
+}
+#res {
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 15px;
+    width: 430px;
+}
+#filtro04 {
+    width: 100px;
+}
+#resultado {
+    margin-left: 20px;
+}

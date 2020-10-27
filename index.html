@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Produção</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<header>
+    
+</header>
+<body onload="puxaStorage()">
+    <section>
+        <div id="corpo">
+            <div id="titulo">
+                <h2 style="text-align: center;">Relatório de Produção</h2>
+            </div>
+            <div>
+                <div class="cell">
+                    <div id="label">
+                        <label for="nomeVendedor">Vendedor: </label>
+                    </div>
+                    <div>
+                        <input type="text" name="nomeVendedor" id="nomeVendedor" class="dados" maxlength="40">
+                    </div>
+                </div>
+                <div class="cell">
+                    <div id="label">
+                        <label for="vendaDiaria">Venda diária: </label>
+                    </div>
+                    <div>
+                        <input type="number" name="vendaDiaria" id="vendaDiaria" class="dados" maxlength="10">
+                    </div>
+                </div>
+                <div class="cell">
+                    <div id="label">
+                        <label for="nomeBanco" id="label">Banco: </label>
+                    </div>
+                    <div>
+                        <input type="text" name="nomeBanco" id="nomeBanco" class="dados" maxlength="20">
+                    </div>
+                </div>
+                <div class="cell">
+                    <div id="label">
+                        <label for="dataVenda" id="label">Data Venda: </label>
+                    </div>
+                    <div>
+                        <input type="date" name="dataVenda" id="dataVenda" style="text-align: center;">
+                    </div>
+                </div>
+                <div id="botoes">
+                    <button onclick="adicionar()"><img src="add32.png" style="margin-top: 3.5px;" alt="adicionar" title="Adicionar"></button>
+                    <button onclick="filtrar()"><img src="loupe32.png" style="margin-top: 3.5px;" alt="filtrar" title="Filtrar"></button>
+                    <button onclick="fake()"><img src="usuario32.png" style="margin-top: 3.5px;" alt="criar fake" title="Criar Fake"></button>
+                    <button onclick="limparinput()"> <img src="reload32.png" style="margin-top: 3.5px;" alt="limpar campos" title="Limpar Campos"></button>
+                    <button onclick="apagarStorage()"><img src="trash32.png" style="margin-top: 3.5px;" alt="apagar tudo" title="Zerar Tudo"></button>
+                </div>
+                <div id="pesquisa" style="display: none;">
+                    <button onclick="excluir()"><img src="cancel24.png" style="margin-top: 3.5px; margin-left: 32%" alt="excluir" title="Excluir"></button>
+                    <button onclick="gravarEdicao()"><img src="salve24.png" style="margin-top: 3.5px; margin-left: 5px;" alt="editar" title="Salvar Edição"></button>
+                </div>
+    
+            </div>
+        </div>
+
+        <div id="filtro" style="display: none;">
+            <label for="selecao">Selecione uma opção de filtro: </label>
+            <select name="selecao" id="selecao" style="width: 110px;" onchange="search()">
+                <option value="" selected></option>
+                <option value="vendedor">Vendedor</option>
+                <option value="vendaDia">Venda Diária</option>
+                <option value="banco">Banco</option>
+                <option value="data">Data</option>
+            </select>
+            
+            <div id="filtros" style="margin-top: 10px;">
+                <div id="filtro01" style="display: none;">
+                    <label for="filtroVendedor">Nome</label>
+                    <input type="text" name="filtroVendedor" id="filtroVendedor">
+                    <div style="margin-top: 5px;">
+                        <button onclick="procurar()"><img src="proximo24.png" alt="Ir" title="Ir"></button>
+                        <button onclick="limpar()"> <img src="reload24.png" alt="Recarregar" title="Recarregar"></button>
+                    </div>
+                </div>
+                <div id="filtro02" style="display: none;">
+                    <label for="filtroVendaDiaria">Venda Diária</label>
+                    <select name="selectVenda" id="selectVenda" style="width: 160px;">
+                        <option value="void" selected></option>
+                        <option value="ordemCrescente">Ordem Crescente</option>
+                        <option value="ordemDecrescente">Ordem Descrescente</option>
+                    </select>
+                    <div style="margin-top: 5px;">
+                        <button onclick="procurar()"><img src="proximo24.png" alt="Ir" title="Ir"></button>
+                        <button onclick="limpar()"> <img src="reload24.png" alt="Recarregar" title="Recarregar"></button>
+                    </div>
+                </div>
+                <div id="filtro03" style="display: none;">
+                    <label for="filtroBanco">Banco</label>
+                    <input type="text" name="filtroBanco" id="filtroBanco">
+                    <div style="margin-top: 5px;">
+                        <button onclick="procurar()"><img src="proximo24.png" alt="Ir" title="Ir"></button>
+                        <button onclick="limpar()"> <img src="reload24.png" alt="Recarregar" title="Recarregar"></button>
+                    </div>
+                </div>
+                <div id="filtro04" style="display: none;">
+                    <div>
+                        <label for="filtroDataInicial">De</label>
+                        <input type="date" name="filtroDataInicial" id="filtroDataInicial">
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <label for="filtroDataFinal">Até</label>
+                        <input type="date" name="filtroDataFinal" id="filtroDataFinal">
+                    </div>
+                    <div style="margin-top: 5px;">
+                        <button onclick="procurar()"><img src="proximo24.png" alt="Ir" title="Ir"></button>
+                        <button onclick="limpar()"> <img src="reload24.png" alt="Recarregar" title="Recarregar"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="resultado">
+            <div id="soma" style="font-size: 12.5pt;">
+
+            </div>
+            <div id="radio">
+
+            </div>
+            <div id="res">
+                
+            </div>
+        </div>
+    </section>
+    <script src="09_script.js"></script>
+</body>
+</html>
